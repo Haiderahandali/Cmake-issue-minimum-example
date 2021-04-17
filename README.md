@@ -16,3 +16,4 @@ cmake --build build --config debug
 
 ![gif of the issue](CmakeIssue.gif)
 
+# test-github-action
