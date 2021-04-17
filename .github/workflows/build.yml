@@ -17,9 +17,16 @@ jobs:
         rm -rf build bin 2> log.txt
         cmake -G"Ninja Multi-Config" -B build . ;
         cmake --build build --config debug;
-        echo Changing Cmake file
-        echo "This is should not build" >> CMakeLists.txt
-        cmake --build build --config debug
         
-        cmake --build build
+        echo "Adding a broken line to end of CMakeLists.txt"
+        echo "This shouldn’t build" >> CMakeLists.txt
+
+        echo "Re-running CMake - this is expected to update the build rules and report an error about invalid CMakeLists.txt but does not"
+        echo "Running cmake --build build --config debug"
+        cmake --build build --config debug
+
+        echo "Re-running CMake with slightly different arguments does update the build rules...."
+        echo "Running cmake --build build"
+        cmake --build build 
+        echo "The following code demos the CMake bug logged in https://gitlab.kitware.com/cmake/cmake/-/issues/22070"
         
