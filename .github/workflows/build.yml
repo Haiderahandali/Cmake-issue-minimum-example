@@ -7,10 +7,6 @@ jobs:
   build:
     runs-on: macos-10.15
 
-    env:
-      BUILD_TYPE: Release
-      CC: gcc
-      CXX: g++
     steps:
     - name: Checkout
       uses: actions/checkout@v1
@@ -25,4 +21,6 @@ jobs:
         echo "##" >> CMakeLists.txt
         
         cmake --build build --config debug
+        
+        cmake --build build
         
