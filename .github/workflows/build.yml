@@ -1,0 +1,26 @@
+name: CMake
+
+on: [push, pull_request]
+
+
+jobs:
+  build:
+    runs-on: macos-10.15
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - uses: seanmiddleditch/gha-setup-ninja@master
+    - name: Build
+      run: |
+        touch log.txt
+        rm -rf build bin 2> log.txt
+        cmake -G"Ninja Multi-Config" -B build . ;
+        cmake --build build --config debug;
+        echo Changing Cmake file
+        echo "##" >> CMakeLists.txt
+        
+        cmake --build build --config debug
+        
+        cmake --build build
+        
