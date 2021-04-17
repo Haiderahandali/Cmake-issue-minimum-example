@@ -18,8 +18,7 @@ jobs:
         cmake -G"Ninja Multi-Config" -B build . ;
         cmake --build build --config debug;
         echo Changing Cmake file
-        echo "##" >> CMakeLists.txt
-        
+        echo "This is should not build" >> CMakeLists.txt
         cmake --build build --config debug
         
         cmake --build build
