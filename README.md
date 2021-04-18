@@ -1,4 +1,5 @@
 ## CMAKE ISSUE with Ninja Multi Config minimal example
+## https://gitlab.kitware.com/cmake/cmake/-/issues/22070
 ### to reproduce the issue
 ```
 mkdir bug && cd bug;
